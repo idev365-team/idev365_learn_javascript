@@ -1,0 +1,89 @@
+<style>
+.output * {
+  box-sizing: border-box;
+}
+
+.output ul {
+  padding-left: 0;
+}
+
+.output li {
+  display: block;
+  float: left;
+  width: 25%;
+  border: 2px solid white;
+  padding: 5px;
+  height: 40px;
+  background-color: #4A2DB6;
+  color: white;
+}
+
+</style>
+
+<h2></h2>
+<div class="output" style="height: 500px;overflow: auto;">
+    <label for="month">Select month: </label>
+    <select id="month">
+      <option value="January">January</option>
+      <option value="February">February</option>
+      <option value="March">March</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
+  
+    <h1></h1>
+  
+    <ul></ul>
+  </div>
+  
+<script>
+    var yearH2 = document.querySelector('h2');
+var select = document.querySelector('select');
+var list = document.querySelector('ul');
+var h1 = document.querySelector('h1');
+
+function isLeapYear (Year) {
+    return (((Year % 4)==0) && ((Year % 100)!=0) || ((Year % 400)==0));
+}
+
+select.onchange = function() {
+  var curYear = new Date().getFullYear();
+  var choice = select.value;
+  var days = 31;
+  if(choice === 'February') {
+    days = isLeapYear(curYear)?29:28;
+  } else if(choice === 'April' || choice === 'June' || choice === 'September'|| choice === 'November') {
+    days = 30;
+  }
+
+
+  console.log(choice)
+
+  // ADD CONDITIONAL HERE
+
+  createCalendar(days, choice);
+}
+
+function createCalendar(days, choice) {
+    var curYear = new Date().getFullYear();
+    yearH2.textContent = curYear+"的日历"
+  list.innerHTML = '';
+  h1.textContent = choice;
+  for (var i = 1; i <= days; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = i;
+    list.appendChild(listItem);
+  }
+}
+
+createCalendar(31,'January');
+
+
+</script>
