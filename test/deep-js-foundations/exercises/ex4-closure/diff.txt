@@ -1,0 +1,8 @@
+		$workDescription.addClass("shortened");						   |			$workDescription
+		// TODO										   |				.addClass("shortened")
+												   >				.on("click",function onClick(){
+												   >					$workDescription
+												   >						.removeClass("shortened")
+												   >						.off("click",onClick)
+												   >						.text(workEntryData.description);
+												   >				});

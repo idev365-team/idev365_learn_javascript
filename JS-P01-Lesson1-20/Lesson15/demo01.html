@@ -1,0 +1,14 @@
+<script>
+    function createNewPerson(name){
+        var obj = {}
+        obj.name = name;
+        obj.greeting = function(){
+            alert("Hi! I'm"+this.name+".")
+        }
+        return obj;
+    }
+
+    var p1 = createNewPerson("张三")
+    p1.greeting()
+
+</script>

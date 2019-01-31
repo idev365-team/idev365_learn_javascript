@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <style>
+        .tab{
+            background-color: white;
+            border-bottom:solid 3px blueviolet;
+            padding:20px;
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            height:50px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+        }
+        .tab ul{
+            margin:0;
+            padding:0;
+        }
+        .tab li{
+            display: inline-block;
+            border:solid 1px blueviolet;
+            padding:10px 20px;
+            background-color: blueviolet;
+            color:white;
+            border-radius: 5px;
+        }
+        .container{
+            margin-top:120px;
+        }
+        p{
+            background-color: blueviolet;
+            min-height: 500px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <ul >
+                <li>Tab01</li>
+                <li>Tab02</li>
+                <li>Tab03</li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1 data-tab="Tab01">Tab01-这里是Tab01的内容</h1>
+        <p>这里有一段很长的内容</p>
+        <h1  data-tab="Tab02">Tab02-这里是Tab01的内容</h1>
+        <p>这里有一段很长的内容</p>
+        <h1  data-tab="Tab03">Tab03-这里是Tab01的内容</h1>
+        <p>这里有一段很长的内容</p>
+    </div>
+    <script>
+        var targetH1 = null;
+        var $tab = $(".tab")
+        $(".tab li").click(function(){
+            let $html = $("html")
+            let tabName = $(this).html();
+
+            let tabHeight = $tab.outerHeight()
+
+            //获取要滑动的h1标签
+            let findTargetH1Str = '[data-tab="'+tabName+'"]'
+            targetH1 = $(".container").find(findTargetH1Str)[0]
+            if(targetH1){
+                console.log("targetH1->",targetH1,targetH1.offsetTop)
+                let needScrollHeight = targetH1.offsetTop  - tabHeight
+                //计算要滑动的距离
+                //非动画版
+                // $html.scrollTop(needScrollHeight)
+
+                //动画版滚动
+                $html.stop().animate({scrollTop:needScrollHeight}, 500, 'swing', function() { 
+                 console.log("Finished animating");
+                });
+
+            }
+            
+        })
+
+    </script>
+</body>
+</html>

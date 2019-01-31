@@ -1,0 +1,19 @@
+												   >	var App = (function setupApp(){
+initUI();											   |		var publicAPI = {
+												   >			init: initUI,
+												   >			addProject: addProject,
+												   >			addWorkToProject: addWorkToProject
+												   >		};
+// hard coding some initial data								   |		return publicAPI;
+addProject("client features");									   <
+addProject("overhead");										   <
+addProject("backlog");										   <
+												   >	})();
+												   >
+												   >
+												   >	App.init();
+												   >
+												   >	// hard coding some initial data
+												   >	App.addProject("client features");
+												   >	App.addProject("overhead");
+												   >	App.addProject("backlog");

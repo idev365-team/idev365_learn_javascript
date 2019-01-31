@@ -1,0 +1,4 @@
+		if (description.length < Helpers.minWorkDescriptionLength) return false;	   |			if (description.length < this.minWorkDescriptionLength) return false;
+			minutes > Helpers.maxWorkTime						   |				minutes > this.maxWorkTime
+		if (description.length > Helpers.maxVisibleWorkDescriptionLength) {		   |			if (description.length > this.maxVisibleWorkDescriptionLength) {
+			description = `${description.substr(0,Helpers.maxVisibleWorkDescriptionL   |				description = `${description.substr(0,this.maxVisibleWorkDescriptionLeng

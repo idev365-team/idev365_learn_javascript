@@ -1,0 +1,25 @@
+<p>Enter a number between 18 and 99:</p>
+<input type="text" name="age" size=3 onChange="validate(this, 18, 99);">
+
+<script>
+    function validate(obj, lowval, hival){
+        if ((obj.value < lowval) || (obj.value > hival))
+            console.log("Invalid Value!");
+    }
+
+    class Person{
+        constructor(name){
+            this.name = name;
+        }
+    }
+
+    class Student extends Person{
+        constructor(name,age){
+            super(name)
+            this.age = age;
+        }
+
+    }
+    let stu = new Student("张三",16)
+    console.log(stu)
+</script>

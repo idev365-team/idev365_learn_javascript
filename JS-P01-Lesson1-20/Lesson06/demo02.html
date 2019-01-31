@@ -1,0 +1,26 @@
+<div class="output" style="min-height: 125px;">
+    <ul>
+    </ul>
+</div>
+
+<script>
+
+function toCaption(words){
+    return words[0].toUpperCase()+ words.slice(1,words.length).toLowerCase()
+}
+
+var list = document.querySelector('.output ul');
+list.innerHTML = '';
+var cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOL'];
+for(var i = 0; i < cities.length; i++) {
+  var input = cities[i];
+  // write your code just below here
+
+  var result = toCaption(input);
+  var listItem = document.createElement('li');
+  listItem.textContent = result;
+  list.appendChild(listItem);
+}
+
+
+</script>

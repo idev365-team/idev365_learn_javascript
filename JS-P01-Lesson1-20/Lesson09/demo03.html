@@ -1,0 +1,16 @@
+<script>
+
+let score = parseFloat(prompt("请输入你的分数"))
+let levelTitle=""
+console.log(score)
+if( score>=90 ){
+    levelTitle="优秀"
+}else if(score>70){
+    levelTitle="良好"
+}else if(score>70){
+    levelTitle="及格"
+}else {
+    levelTitle="不及格"
+}
+alert("当前等第:"+levelTitle+"("+score+")")
+</script>

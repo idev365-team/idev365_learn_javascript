@@ -1,0 +1,33 @@
+<style>
+    #parent-list{
+
+        border:solid 10px blue;
+        padding: 20px;
+    }
+
+</style>
+<ul id="parent-list">
+        <li id="post-1">Item 1</li>
+        <li id="post-2">Item 2</li>
+        <li id="post-3">Item 3</li>
+        <li id="post-4">Item 4</li>
+        <li id="post-5">Item 5</li>
+        <li id="post-6">Item 6</li>
+    </ul>
+
+<script>
+
+
+// Get the element, add a click listener...
+document.getElementById("parent-list").addEventListener("click", function(e) {
+	// e.target is the clicked element!
+	// If it was a list item
+    console.log("event clicked",e)
+	if(e.target && e.target.nodeName == "LI") {
+		// List item found!  Output the ID!
+		console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
+	}
+});
+
+
+</script>

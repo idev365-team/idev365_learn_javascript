@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+    <script>
+    var header = document.querySelector('header');
+    var section = document.querySelector('section');
+
+    var url = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json"
+    var request = new XMLHttpRequest()
+    request.open('GET',url)
+    request.responseType = "json"
+    request.send()
+    request.onload = function(){
+        var superHeroes =request.response
+
+        console.log("superHeroes",superHeroes)
+        populateHeader(superHeroes)
+        showHeroes(superHeroes)
+    }
+
+    function populateHeader(jsonObj){
+        var myH1 = document.createElement('h1')
+        myH1.textContent = jsonObj['squadName'];
+        header.appendChild(myH1)
+    }
+
+    function showHeroes(jsonObj){
+        var heroes = jsonObj["members"]
+        for(let i=0;i<heroes.length;i++){
+            var hero = heroes[i]
+            var myArticle = document.createElement('article')
+            var myH2 = document.createElement('h2')
+            var myPara1 = document.createElement('p')
+            var myPara2 = document.createElement('p')
+            var myPara3 = document.createElement('p')
+            var myList = document.createElement('ul')
+
+            myH2.textContent = hero.name
+            myPara1.textContent = 'Secret identity:'+hero.secretIdentity
+            myPara2.textContent = 'Age:'+hero.age
+            myPara3.textContent = 'Superpowers:'
+
+            let superpowers =hero.powers
+            for(let j=0;j<superpowers.length;j++){
+                let listItem = document.createElement('li')
+                listItem.textContent = superpowers[j]
+                myList.appendChild(listItem)
+            }
+
+            myArticle.appendChild(myH2)
+            myArticle.appendChild(myPara1)
+            myArticle.appendChild(myPara2)
+            myArticle.appendChild(myPara3)
+            myArticle.appendChild(myList)
+
+            section.appendChild(myArticle)
+        }
+    }
+    </script>
+  </body>
+</html>

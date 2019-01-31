@@ -1,0 +1,17 @@
+		addWorkToProject(projectId,description,minutes);				   |			addWorkToProject(Number(projectId),description,Number(minutes));
+	// TODO											   |		if (description.length < 5) return false;
+												   >		if (
+												   >			/^\s*$/.test(minutes) ||
+												   >			Number.isNaN(Number(minutes)) ||
+												   >			minutes < 0 ||
+												   >			minutes > 600
+												   >		) {
+												   >			return false;
+												   >		}
+												   >
+												   >		return true;
+	var projectEntryData = { id: projectId, description: description, work: [] };		   |		var projectEntryData = { id: projectId, description: description, work: [], time: 0 };
+	projects.time = projects.time + minutes;						   |		projects.time = (projects.time || 0) + minutes;
+	projectEntryData.time = projectEntryData.time + minutes;				   |		projectEntryData.time = (projectEntryData.time || 0) + minutes;
+	if (minutes < 10) minutes = `0${minutes}`;						   <
+												   >		if (minutes < 10) minutes = `0${minutes}`;

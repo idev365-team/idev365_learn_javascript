@@ -1,0 +1,60 @@
+												   >	const projectTemplate = "<div class='project-entry'><h3 class='project-description' rel='js-proj
+												   >	const workEntryTemplate = "<li class='work-entry'><span class='work-time' rel='js-work-time'></s
+												   >	const maxVisibleWorkDescriptionLength = 20;
+												   >	const minWorkDescriptionLength = 5;
+												   >	const maxWorkTime = 600;
+												   >
+												   >	var projects = [];
+												   >
+												   >	var $workEntryForm;
+												   >	var $workEntrySelectProject;
+												   >	var $workEntryDescription;
+												   >	var $workEntryTime;
+												   >	var $workEntrySubmit;
+												   >	var $totalTime;
+												   >	var $projectList;
+												   >
+												   >	initUI();
+												   >
+												   >	// hard coding some initial data
+												   >	addProject("client features");
+												   >	addProject("overhead");
+												   >	addProject("backlog");
+												   >
+												   >
+												   >	// **************************
+												   >
+	{ let handleClick;									   |		$workEntrySubmit.on("click",submitNewWorkEntry);
+		handleClick = function submitNewWorkEntry(){					   |	}
+												   >
+												   >	function submitNewWorkEntry() {
+		};										   <
+												   <
+		$workEntrySubmit.on("click",handleClick);					   <
+	}											   <
+												   <
+												   <
+// **************************									   <
+												   <
+const projectTemplate = "<div class='project-entry'><h3 class='project-description' rel='js-proj   <
+const workEntryTemplate = "<li class='work-entry'><span class='work-time' rel='js-work-time'></s   <
+const maxVisibleWorkDescriptionLength = 20;							   <
+const minWorkDescriptionLength = 5;								   <
+const maxWorkTime = 600;									   <
+												   <
+var projects = [];										   <
+												   <
+var $workEntryForm;										   <
+var $workEntrySelectProject;									   <
+var $workEntryDescription;									   <
+var $workEntryTime;										   <
+var $workEntrySubmit;										   <
+var $totalTime;											   <
+var $projectList;										   <
+												   <
+initUI();											   <
+												   <
+// hard coding some initial data								   <
+addProject("client features");									   <
+addProject("overhead");										   <
+addProject("backlog");										   <

@@ -1,0 +1,57 @@
+<div class="output" style="min-height: 150px;">
+    <ul>
+        <li>0</li>
+    </ul>
+    <p>Total: $0.00</p>
+</div>
+
+<script>
+
+var list = document.querySelector('.output ul');
+var totalBox = document.querySelector('.output p');
+var total = 0;
+list.innerHTML = '';
+totalBox.textContent = '';
+// number 1
+var orgData = [
+    'Underpants:6.99',
+    'Socks:5.99',
+    'T-shirt:14.99',
+    'Trousers:31.99',
+    'Shoes:23.99',
+]
+
+var shopcat = [
+    
+];
+
+function paseData(){
+    for(let i=0;i<orgData.length;i++){
+        let curData = orgData[i];
+        let curDataArr = curData.split(":")
+        let name = curDataArr[0]
+        let price = Number(curDataArr[1])
+        shopcat.push({
+            name:name,
+            price:price,
+        })
+    }
+}
+
+paseData()
+
+console.log("shopcat->",shopcat)
+for (let i = 0; i < shopcat.length; i++) { // number 2
+  let product = shopcat[i]
+  itemText = "产品名称:"+product.name+"----"+product.price;
+
+  total = total + product.price;
+  var listItem = document.createElement('li');
+  listItem.textContent = itemText;
+  list.appendChild(listItem);
+}
+
+totalBox.textContent = 'Total: $' + total.toFixed(2);
+
+
+</script>

@@ -1,0 +1,47 @@
+<div class="output" style="min-height: 150px;">
+    <input type="text">
+    <button>Search</button>
+    <ul></ul>
+</div>
+<script>
+
+var list = document.querySelector('.output ul');
+var searchInput = document.querySelector('.output input');
+var searchBtn = document.querySelector('.output button');
+
+list.innerHTML = '';
+
+var myHistory = [];
+
+searchBtn.onclick = function() {
+  // 如果搜索框不为空，我们则将搜索词添加到开头
+  if (searchInput.value !== '') {
+    // number 1
+
+    myHistory.unshift(searchInput.value)
+    if(myHistory.length==6){
+        myHistory.pop()
+    }
+    
+    // 清空显示的搜索关键词列表，防止显示
+    // 每次输入搜索词都会重新生成显示的内容
+    list.innerHTML = '';
+
+    // 通过循环遍历，显示所有的搜索关键词
+    for (var i = 0; i < myHistory.length; i++) {
+      var itemText = myHistory[i];
+      var listItem = document.createElement('li');
+      listItem.textContent = itemText;
+      list.appendChild(listItem);
+    }
+
+
+
+    // 清空并聚焦到搜索框，准备下一次的搜索
+    searchInput.value = '';
+    searchInput.focus();
+  }
+}
+
+
+</script>

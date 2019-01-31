@@ -1,0 +1,31 @@
+<form name="selectForm">
+    <p>
+      <label for="musicTypes">Choose some music types, then click the button below:</label>
+      <select id="musicTypes" name="musicTypes" multiple="multiple">
+        <option selected="selected">R&B</option>
+        <option>爵士</option>
+        <option>布鲁斯</option>
+        <option>新纪元</option>
+        <option>古典</option>
+        <option>歌剧</option>
+      </select>
+    </p>
+    <p><input id="btn" type="button" value="选择了多少个选项?" /></p>
+  </form>
+  
+  <script>
+  function howMany(selectObject) {
+    var numberSelected = 0;
+    for (var i = 0; i < selectObject.options.length; i++) {
+      if (selectObject.options[i].selected) {
+        numberSelected++;
+      }
+    }
+    return numberSelected;
+  }
+  
+  var btn = document.getElementById("btn");
+  btn.addEventListener("click", function(){
+    alert('选择选项的数量是: ' + howMany(document.selectForm.musicTypes))
+  });
+  </script>

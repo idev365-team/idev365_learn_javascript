@@ -1,0 +1,11 @@
+<script>
+function Person(name){
+    this.name = name;
+    this.greeting = function(){
+        alert("Hi! I'm"+this.name+".")
+    }
+}
+
+var p1 = new Person("张三")
+p1.greeting()
+</script>

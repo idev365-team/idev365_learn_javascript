@@ -1,0 +1,54 @@
+// hard coding some initial data								   <
+App.addProject("client features");								   <
+App.addProject("overhead");									   <
+App.addProject("backlog");									   <
+												   <
+		var project = Project(description);						   |			var project = new Project(description);
+	var projectId = Math.round(Math.random()*1E4);						   |		this.projectId = Math.round(Math.random()*1E4);
+	var work = [];										   |		this.description = description;
+	var time = 0;										   |		this.work = [];
+												   |		this.time = 0;
+	var publicAPI = {									   |	}
+		getId: getId,									   <
+		getDescription: getDescription,							   <
+		getTime: getTime,								   <
+		addWork: addWork,								   <
+		getWorkEntryCount: getWorkEntryCount,						   <
+		getWorkEntryLocation: getWorkEntryLocation					   <
+	};											   <
+												   <
+	return publicAPI;									   <
+	function getId() {									   |	Project.prototype.getId = function getId(){
+		return projectId;								   |		return this.projectId;
+	}											   |	};
+	function getDescription() {								   |	Project.prototype.getDescription = function getDescription(){
+		return description;								   |		return this.description;
+	}											   |	};
+	function getTime() {									   |	Project.prototype.getTime = function getTime(){
+		return time;									   |		return this.time;
+	}											   |	};
+	function addWork(workEntryData) {							   |	Project.prototype.addWork = function addWork(workEntryData){
+		workEntryData.id = work.length + 1;						   |		workEntryData.id = this.work.length + 1;
+		work.push(workEntryData);							   |		this.work.push(workEntryData);
+		time = (time || 0) + workEntryData.time;					   |		this.time = (this.time || 0) + workEntryData.time;
+		if (work.length > 1) {								   |		if (this.work.length > 1) {
+			work.sort(function sortTimeDescending(a,b){				   |			this.work.sort(function sortTimeDescending(a,b){
+	}											   |	};
+	function getWorkEntryCount() {								   |	Project.prototype.getWorkEntryCount = function getWorkEntryCount(){
+		return work.length;								   |		return this.work.length;
+	}											   |	};
+	function getWorkEntryLocation(workEntryId) {						   |	Project.prototype.getWorkEntryLocation = function getWorkEntryLocation(workEntryId){
+		for (let i = 0; i < work.length; i++) {						   |		for (let i = 0; i < this.work.length; i++) {
+			if (work[i].id == workEntryId) {					   |			if (this.work[i].id == workEntryId) {
+		if (entryIdx < (work.length - 1)) {						   |		if (entryIdx < (this.work.length - 1)) {
+			return [ work[entryIdx + 1].id, /*insertBefore=*/true ];		   |			return [ this.work[entryIdx + 1].id, /*insertBefore=*/true ];
+			return [ work[entryIdx - 1].id, /*insertBefore=*/false ];		   |			return [ this.work[entryIdx - 1].id, /*insertBefore=*/false ];
+		}										   <
+	}											   <
+												   >	};
+												   >
+												   >
+												   >	// hard coding some initial data
+												   >	App.addProject("client features");
+												   >	App.addProject("overhead");
+												   >	App.addProject("backlog");

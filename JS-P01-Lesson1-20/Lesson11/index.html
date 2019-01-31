@@ -1,0 +1,23 @@
+<div id="app1">
+</div>
+
+<div id="app2">
+</div>
+
+
+<div id="app3">
+</div>
+
+
+<script>
+    function createEmailLink(title="发送邮件",email="admin@system.com",style="color:blue;text-decoration:none;"){
+        return '<a style="'+style+'" href="mailto:'+email+'" >'+title+'</a>'
+    }
+    let root1 = document.querySelector("#app1")
+    let root2 = document.querySelector("#app2")
+    let root3 = document.querySelector("#app3")
+
+    root1.innerHTML = createEmailLink()
+    root2.innerHTML = createEmailLink("给张三发邮件","zs@123.com","color:red;font-size:12px;")
+    root3.innerHTML = createEmailLink("给李四发邮件","ls@456.com","color:green;text-decoration:none;")
+</script>

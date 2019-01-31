@@ -1,0 +1,23 @@
+
+<script>
+
+    var a = "1234567890abcdefg"
+    var a = new Array(100000).join("abc")
+
+
+function f(){
+  var o = {
+      big:new Array(100000).join("abc")
+  };
+  var o2 = {};
+  o.a = o2; // o 引用 o2
+  o2.a = o; // o2 引用 o
+
+  return {
+      a:"azerty",
+      b:o
+  };
+}
+
+
+</script>

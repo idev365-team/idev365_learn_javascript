@@ -1,0 +1,51 @@
+<button >Change color</button>
+<button >Change color</button>
+<button >Change color</button>
+
+<script>
+
+var btnList = document.querySelectorAll('button');
+// btnList.forEach((btn)=>btn.onclick = changeBgColor)
+
+for(let i=0;i<btnList.length;i++){
+    var btn = btnList[i]
+    btn.onclick = changeBgColor
+    // btn.onclick = alertMessage
+    // btn.addEventListener('click',changeBgColor)
+    // btn.addEventListener('click',alertMessage)
+}
+
+document.body.onclick=changeBgColor
+
+
+function alertMessage(){
+    alert("Hello")
+}
+
+
+function random(number) {
+  return Math.floor(Math.random()*(number+1));
+}
+
+function changeBgColor(event) {
+  var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  event.target.style.backgroundColor = rndCol;
+}
+
+
+
+
+
+window.onkeypress=function(event){
+    console.log("window.onkeypress",event)
+}
+
+window.onkeydown=function(event){
+    console.log("window.onkeydown",event)
+}
+
+window.onkeyup=function(event){
+    console.log("window.onkeyup",event)
+}
+
+</script>

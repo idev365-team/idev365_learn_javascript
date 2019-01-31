@@ -1,0 +1,100 @@
+	function addProjectToList(projectId,projectDescription) {				   |		function addProjectToList(project) {
+												   >			var projectId = project.getId();
+												   >			var projectDescription = project.getDescription();
+												   >
+	function addProjectSelection(projectId,projectDescription) {				   |		function addProjectSelection(project) {
+												   >			var projectId = project.getId();
+												   >			var projectDescription = project.getDescription();
+												   >
+	function addWorkEntryToList(projectId,workEntryData) {					   |		function addWorkEntryToList(project,workEntryData) {
+												   >			var projectId = project.getId();
+												   >
+		if (App.getWorkEntryCount(projectId) > 1) {					   |			if (project.getWorkEntryCount() > 1) {
+				[ adjacentWorkEntryId, insertBefore ] = App.getWorkEntryLocation   |					[ adjacentWorkEntryId, insertBefore ] = project.getWorkEntryLoca
+	function updateProjectTotalTime(projectId,projectTime) {				   |		function updateProjectTotalTime(project) {
+												   >			var projectId = project.getId();
+												   >			var projectTime = project.getTime();
+												   >
+		addWorkToProject: addWorkToProject,						   |			addWorkToProject: addWorkToProject
+		getWorkEntryCount: getWorkEntryCount,						   <
+		getWorkEntryLocation: getWorkEntryLocation					   <
+		var projectEntryData;								   |			var project = Project(description);
+												   |			projects.push(project);
+		{ let projectId;								   <
+			projectId = Math.round(Math.random()*1E4);				   <
+			projectEntryData = { id: projectId, description: description, work: [],    <
+		}										   <
+		projects.push(projectEntryData);						   <
+		UI.addProjectToList(projectEntryData.id,projectEntryData.description);		   |			UI.addProjectToList(project);
+		UI.addProjectSelection(projectEntryData.id,projectEntryData.description);	   |			UI.addProjectSelection(project);
+			if (projects[i].id === projectId) {					   |				if (projects[i].getId() === projectId) {
+		var projectEntryData = findProjectEntry(projectId);				   |			var project = findProjectEntry(projectId);
+		projectEntryData.time = (projectEntryData.time || 0) + minutes;			   <
+		var workEntryData = { id: projectEntryData.work.length + 1, description: descrip   |			var workEntryData = { description: description, time: minutes };
+		projectEntryData.work.push(workEntryData);					   |
+												   >			project.addWork(workEntryData);
+												   >
+												   >			UI.addWorkEntryToList(project,workEntryData);
+												   >			UI.updateProjectTotalTime(project);
+												   >			UI.updateWorkLogTotalTime(totalTime);
+												   >		}
+												   >	}
+												   >
+												   >
+												   >	// ****************************************************************
+												   >	// ****************************************************************
+												   >
+												   >
+												   >	function Project(description) {
+												   >		var projectId = Math.round(Math.random()*1E4);
+												   >		var work = [];
+												   >		var time = 0;
+												   >
+												   >		var publicAPI = {
+												   >			getId: getId,
+												   >			getDescription: getDescription,
+												   >			getTime: getTime,
+												   >			addWork: addWork,
+												   >			getWorkEntryCount: getWorkEntryCount,
+												   >			getWorkEntryLocation: getWorkEntryLocation
+												   >		};
+												   >
+												   >		return publicAPI;
+												   >
+												   >
+												   >		// **************************
+												   >
+												   >		function getId() {
+												   >			return projectId;
+												   >		}
+												   >
+												   >		function getDescription() {
+												   >			return description;
+												   >		}
+												   >
+												   >		function getTime() {
+												   >			return time;
+												   >		}
+												   >
+												   >		function addWork(workEntryData) {
+												   >			workEntryData.id = work.length + 1;
+												   >			work.push(workEntryData);
+												   >
+												   >			time = (time || 0) + workEntryData.time;
+		if (projectEntryData.work.length > 1) {						   |			if (work.length > 1) {
+			projectEntryData.work = projectEntryData.work.slice().sort(function sort   |				work.sort(function sortTimeDescending(a,b){
+												   <
+		UI.addWorkEntryToList(projectId,workEntryData);					   <
+		UI.updateProjectTotalTime(projectId,projectEntryData.time);			   <
+		UI.updateWorkLogTotalTime(totalTime);						   <
+	function getWorkEntryCount(projectId) {							   |		function getWorkEntryCount() {
+		var projectEntryData = findProjectEntry(projectId);				   |			return work.length;
+		return projectEntryData.work.length;						   <
+	function getWorkEntryLocation(projectId,workEntryId) {					   |		function getWorkEntryLocation(workEntryId) {
+		var projectEntryData = findProjectEntry(projectId);				   <
+												   <
+		for (let i = 0; i < projectEntryData.work.length; i++) {			   |			for (let i = 0; i < work.length; i++) {
+			if (projectEntryData.work[i].id == workEntryId) {			   |				if (work[i].id == workEntryId) {
+		if (entryIdx < (projectEntryData.work.length - 1)) {				   |			if (entryIdx < (work.length - 1)) {
+			return [ projectEntryData.work[entryIdx + 1].id, /*insertBefore=*/true ]   |				return [ work[entryIdx + 1].id, /*insertBefore=*/true ];
+			return [ projectEntryData.work[entryIdx - 1].id, /*insertBefore=*/false    |				return [ work[entryIdx - 1].id, /*insertBefore=*/false ];
